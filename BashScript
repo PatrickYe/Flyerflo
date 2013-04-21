@@ -1,0 +1,5 @@
+#!/bin/bash
+curl -s "${1}" > content #reads html into a text file
+output=$(cat content | egrep '*id="header-img"*' | sed -e 's/.*header-img.*"\(.*\)".*width.*/\1/') #finds the url for the target image
+curl -s "$output" > redditimage.png #downloads the target image (named redditimage.png) to local folder
+exit 0 #exit
